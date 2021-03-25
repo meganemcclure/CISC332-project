@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Vet Clinic</title>
-    <link rel="stylesheet" href="airline.css">
+    <title>Airline</title>
+    <link rel="stylesheet" href="CSS/airline.css">
 </head>
 
 <body>
@@ -48,7 +48,12 @@
             echo "<br>";
         }
         ?>
-        <input type="submit" value="Get Flights">
+        <input class="button" type="submit" value="Get Flights">
+    </form>
+
+    <h2>Add a Flight:</h2>
+    <form action="createFlight.php" method="post">
+        <input class="button" type="submit" value="Add Flight">
     </form>
 
 <?php

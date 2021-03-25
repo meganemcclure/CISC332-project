@@ -11,8 +11,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Vet Clinic</title>
-    <link rel="stylesheet" href="airline.css">
+    <title>Airline</title>
+    <link rel="stylesheet" href="CSS/airline.css">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
     ?>
 
     <form action="airline.php" method="post">
-        <input type="submit" value="Home">
+        <input class="button" type="submit" value="Home">
     </form>
 
     <?php

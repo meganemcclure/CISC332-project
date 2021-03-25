@@ -1,0 +1,58 @@
+ol li {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: lavenderblush;
+}
+
+ol li p {
+  margin: 5px;
+  padding: 5px;
+  margin-left: 20px;
+  border-radius: 5px;
+  background-color: pink;
+}
+
+.button {
+  background-color: lavenderblush;
+  border-radius: 5px;
+  border-color: pink;
+  border-width: 2px;
+  margin: 5px;
+  padding: 5px;
+}
+
+button {
+  background-color: lavenderblush;
+  border-radius: 5px;
+  border-color: pink;
+  border-width: 2px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.carosel {
+  max-width: 300px;
+  height: 600px;
+  position: relative;
+  margin: auto;
+}
+
+.slide {
+  display: none;
+  height: 600px;
+  background-color: lavenderblush;
+  margin: 5px;
+  padding: 5px;
+  border-color: pink;
+  border-width: 2px;
+  border-radius: 5px;
+}
+
+.nav {
+  width: 100px;
+}
+
+#addFlight {
+  display: none;
+}
