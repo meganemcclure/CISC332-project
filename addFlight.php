@@ -44,13 +44,22 @@
     $airplane = $_POST["airplane"];
     $departure = "'".$_POST["departureCode"]."'";
     $arrival = "'".$_POST["arrivalCode"]."'";
-    // $daysOffered = $_POST("daysOffered");
 
-    $insertFlight = "INSERT INTO flight values(".$flightNumber.", ".$airlineCode.", ".$airplane.", ".$departure.", null, null, ".$arrival.", null, null)";
+    $departureTime = "'".$_POST["departureHour"].":".$_POST["departureMinute"].":00'";
+    $arrivalTime = "'".$_POST["arrivalHour"].":".$_POST["arrivalMinute"].":00'";
 
-    $insert = $connection->exec($insertFlight);
+    $insertFlight = "INSERT INTO flight values(".$flightNumber.", ".$airlineCode.", ".$airplane.", ".$departure.", ".$departureTime.", null, ".$arrival.", ".$arrivalTime.", null)";
+
+    $connection->exec($insertFlight);
 
     $flights = $connection->query("select * from flight");
+
+    if (isset($_POST['dayOffered'])) {
+        // add all of them to the daysOffered table
+        foreach($_POST['dayOffered'] AS $key=>$day) {
+            $connection->exec("INSERT INTO daysoffered values(".$flightNumber.", ".$airlineCode.", '".$day."')");
+        }
+    }
 
     while ($row = $flights->fetch()) {
         echo "<tr>";

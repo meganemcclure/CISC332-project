@@ -64,7 +64,7 @@
         </div>
 
         <div class="slide">
-            <h2>Select departure location:</h2>
+            <h2>Select Departure Location:</h2>
             <?php
             $airports = $connection->query("select * from airport");
 
@@ -74,10 +74,30 @@
                 echo "<br>";
             }
             ?>
+
+            <h2>Select Departure Time:</h2>
+
+            <label for="departureHour">Hour:</label>
+            <select name="departureHour">
+            <?php
+            for ($i = 0; $i < 24; $i++) {
+                echo "<option value='".$i."'>".$i."</option>";
+            }
+            ?>
+            </select>
+
+            <label for="departureMinute">Minute:</label>
+            <select name="departureMinute">
+            <?php
+            for ($i = 0; $i < 60; $i++) {
+                echo "<option value='".$i."'>".$i."</option>";
+            }
+            ?>
+            </select>
         </div>
 
         <div class="slide">
-            <h2>Select Arrival location:</h2>
+            <h2>Select Arrival Location:</h2>
             <?php
             $airports = $connection->query("select * from airport");
 
@@ -87,23 +107,45 @@
                 echo "<br>";
             }
             ?>
+
+            <h2>Select Arrival Time:</h2>
+
+            <label for="arrivalHour">Hour:</label>
+            <select name="arrivalHour">
+            <?php
+            for ($i = 0; $i < 24; $i++) {
+                echo "<option value='".$i."'>".$i."</option>";
+            }
+            ?>
+            </select>
+
+            <label for="arrivalMinute">Minute:</label>
+            <select name="arrivalMinute">
+            <?php
+            for ($i = 0; $i < 60; $i++) {
+                echo "<option value='".$i."'>".$i."</option>";
+            }
+            ?>
+            </select>
         </div>
 
         <div class="slide">
             <h2>Select days offered:</h2>
-            <input type="checkbox" name="dayOffered" value="Monday">Monday<br>
-            <input type="checkbox" name="dayOffered" value="Tuesday">Tuesday<br>
-            <input type="checkbox" name="dayOffered" value="Wednesday">Wednesday<br>
-            <input type="checkbox" name="dayOffered" value="Thursday">Thursday<br>
-            <input type="checkbox" name="dayOffered" value="Friday">Friday<br>
-            <input type="checkbox" name="dayOffered" value="Saturday">Saturday<br>
-            <input type="checkbox" name="dayOffered" value="Sunday">Sunday<br>
+            <input type="checkbox" name="dayOffered[]" value="Monday">Monday<br>
+            <input type="checkbox" name="dayOffered[]" value="Tuesday">Tuesday<br>
+            <input type="checkbox" name="dayOffered[]" value="Wednesday">Wednesday<br>
+            <input type="checkbox" name="dayOffered[]" value="Thursday">Thursday<br>
+            <input type="checkbox" name="dayOffered[]" value="Friday">Friday<br>
+            <input type="checkbox" name="dayOffered[]" value="Saturday">Saturday<br>
+            <input type="checkbox" name="dayOffered[]" value="Sunday">Sunday<br>
         </div>
 
         <!-- previous, next, and submit buttons -->
-        <button type="button" onclick="plusSlides(-1)">Previous</button>
-        <button type="button" onclick="plusSlides(1)">Next</button>
-        <input class="button" id="addFlight" type="submit" value="Add Flight">
+        <div class="buttonContainer">
+            <button type="button" onclick="plusSlides(-1)">Previous</button>
+            <button type="button" onclick="plusSlides(1)">Next</button>
+            <input class="button" id="addFlight" type="submit" value="Add Flight">
+        </div>
     </div>
 
     </form>
