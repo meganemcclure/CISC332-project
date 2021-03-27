@@ -1,4 +1,6 @@
 <!-- 
+    Part 2:
+
     Allow the user to enter an airline code and a day, then display all
     the flights associated with the given airline that offer flights on the
     specified day.
@@ -18,6 +20,7 @@
 <body>
     <?php
     include 'connectdb.php';
+    include 'components/navigation.php'
     ?>
 
     <form action="airline.php" method="post">

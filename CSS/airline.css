@@ -13,24 +13,6 @@ ol li p {
   background-color: pink;
 }
 
-.button {
-  background-color: lavenderblush;
-  border-radius: 5px;
-  border-color: pink;
-  border-width: 2px;
-  margin: 5px;
-  padding: 5px;
-}
-
-button {
-  background-color: lavenderblush;
-  border-radius: 5px;
-  border-color: pink;
-  border-width: 2px;
-  margin: 5px;
-  padding: 5px;
-}
-
 .carosel {
   max-width: 300px;
   height: 400px;
@@ -49,10 +31,6 @@ button {
   border-radius: 5px;
 }
 
-.nav {
-  width: 100px;
-}
-
 #addFlight {
   display: none;
 }
@@ -62,4 +40,34 @@ th,
 td {
   border: 1px solid black;
   border-collapse: collapse;
+
+  border-color: pink;
+  background-color: lavenderblush;
+}
+
+/* navigation bar */
+
+.navigation {
+  display: flex;
+  background-color: pink;
+  /* border-radius: 5px; */
+  flex-wrap: wrap;
+  padding: 2px;
+}
+
+.nav-button-container {
+  flex-grow: 1;
+  background-color: lavenderblush;
+  justify-content: space-around;
+  /* border-radius: 5px; */
+  margin: 2px;
+  align-items: center;
+}
+
+.nav-button {
+  height: 100%;
+  width: 100%;
+  border-style: none;
+  background-color: transparent;
+  padding: 20px;
 }

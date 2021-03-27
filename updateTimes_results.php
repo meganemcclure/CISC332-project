@@ -1,4 +1,6 @@
 <!-- 
+    Part 4:
+
     Allow the user to update the actual departure tiem of a flight.
 
     The user should choose from a list of flight codes, enter a new
@@ -16,6 +18,7 @@
 <body>
     <?php
     include 'connectdb.php';
+    include 'components/navigation.php'
     ?>
 
     <h2>Departure Time Updated</h2>
@@ -26,7 +29,7 @@
         <input class="button" type="submit" value="Home">
     </form>
 
-    <form action="selectUpdate.php" method="post">
+    <form action="updateTimes.php" method="post">
         <input class="button" type="submit" value="Update Another Flight">
     </form>
 
@@ -38,8 +41,8 @@
 
     $updateDeparture = "UPDATE flight SET ADepartTime=".$departureTime."WHERE Number=".$flightNumber." and AirlineCode=".$airlineCode;
     $connection->exec($updateDeparture);
-    
-    include 'flightInfo.php';
+
+    include 'components/flightInfo.php';
     ?>
 
 </body>

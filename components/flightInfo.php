@@ -2,7 +2,7 @@
     Displays a list of all the flight information for all available flights
 
     Usage: 
-        include 'flightInfo.php'
+        include 'components/flightInfo.php'
 -->
 
 <!DOCTYPE html>
@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="CSS/airline.css">
 </head>
 
-<label for="flightInfo">Current Flight Information</label>
-<table id="FlightInfo">
+<label for="components/flightInfo">Current Flight Information</label>
+<table id="components/flightInfo">
     <tr>
         <th>Flight Code</th>
         <th>Departure Location</th>
