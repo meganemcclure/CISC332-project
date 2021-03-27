@@ -28,16 +28,6 @@
         <input class="button" type="submit" value="Add Another Flight">
     </form>
 
-    <p>All Flights Offered (make sure your flight has been added)</p>
-    <table>
-    <tr>
-        <th>Flight Code</th>
-        <th>Departure Location</th>
-        <th>Arrival Location</th>
-        <th>Scheduled Departure Time</th>
-        <th>Scheduled Arrival Time</th>
-    </tr>
-
     <?php
     $flightNumber = $_POST["flightNumber"];
     $airlineCode = "'".$_POST["airlineCode"]."'";
@@ -52,8 +42,6 @@
 
     $connection->exec($insertFlight);
 
-    $flights = $connection->query("select * from flight");
-
     if (isset($_POST['dayOffered'])) {
         // add all of them to the daysOffered table
         foreach($_POST['dayOffered'] AS $key=>$day) {
@@ -61,20 +49,8 @@
         }
     }
 
-    while ($row = $flights->fetch()) {
-        echo "<tr>";
-
-        echo "<td>".$row["Number"].$row["AirlineCode"]."</td>";
-        echo "<td>".$row["DepartureHost"]."</td>";
-        echo "<td>".$row["ArrivalHost"]."</td>";
-        echo "<td>".$row["SDepartTime"]."</td>";
-        echo "<td>".$row["SArriveTime"]."</td>";
-
-        echo "</tr>";
-    }
+    include 'flightInfo.php'
     ?>
-
-    </table>
 
 </body>
 

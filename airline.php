@@ -56,6 +56,11 @@
         <input class="button" type="submit" value="Add Flight">
     </form>
 
+    <h2>Update a Departure Time:</h2>
+    <form action="selectUpdate.php" method="post">
+        <input class="button" type="submit" value="Update Departure">
+    </form>
+
 <?php
 $connection = NULL;
 ?>
