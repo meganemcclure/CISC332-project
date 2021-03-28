@@ -38,6 +38,12 @@
             </form>
         </span>
 
+        <span class="nav-button-container">
+            <form action="showSeats.php" method="post">
+                <input class="nav-button" type="submit" value="Show Average Number of Seats">
+            </form>
+        </span>
+
     </div>
 
 </body>
