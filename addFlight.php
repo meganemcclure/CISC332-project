@@ -24,62 +24,69 @@
 <body>
     <?php
     include 'connectdb.php';
-    include 'components/navigation.php'
+    include 'components/navigation.php';
+
+    if (isset($_POST["flightNumber"])) {
+        echo '<h1>Create another flight?</h1>';
+    } else {
+        echo '<h1>Create a new flight:</h1>';
+    }
     ?>
 
-    <form action="airline.php" method="post">
-        <input class="button" type="submit" value="Home">
-    </form>
-
-    <h1>Create a new flight:</h1>
-    <form action="addFlight_results.php" method="post">
+    <form action="addFlight.php" method="post">
 
     <div class="carosel">
         <div class="slide">
             <h2>Enter a flight number:</h2>
-            <input type="text" name="flightNumber"><br>
+            <input type="text" name="flightNumber" required><br>
         </div>
 
         <div class="slide">
             <h2>Select an airline:</h2>
-            <?php
-            $airlines = $connection->query("select * from airline");
+            <label for="airlineCode">Airline:</label>
+            <select name="airlineCode" required>
 
-            while ($row = $airlines->fetch()) {
-                echo '<input type="radio" name="airlineCode" value="'.$row["Code"].'">';
-                echo $row["Code"]." (".$row["Name"].")";
-                echo "<br>";
+            <?php
+            $airlineCodes = $connection->query("select * from airline");
+
+            while ($row = $airlineCodes->fetch()) {
+                echo '<option value="'.$row["Code"].'">'.$row["Code"].' ('.$row["Name"].')</option>';
             }
             ?>
+            </select>
         </div>
 
         <div class="slide">
             <h2>Select a plane:</h2>
-            <?php
-            $airlines = $connection->query("select * from airplane");
 
-            while ($row = $airlines->fetch()) {
-                echo '<input type="radio" name="airplane" value="'.$row["ID"].'">';
-                echo $row["ID"]." (".$row["Design"].")";
-                echo "<br>";
+            <label for="airplane">Plane:</label>
+            <select name="airplane">
+
+            <?php
+            $airplanes = $connection->query("select * from airplane");
+            
+            while ($row = $airplanes->fetch()) {
+                echo '<option value="'.$row["ID"].'">'.$row["ID"].' ('.$row["Design"].')</option>';
             }
             ?>
+            </select>
         </div>
 
         <div class="slide">
             <h2>Select Departure Location:</h2>
+            <label for="departureCode">Airport:</label>
+            <select name="departureCode">
+
             <?php
             $airports = $connection->query("select * from airport");
 
             while ($row = $airports->fetch()) {
-                echo '<input type="radio" name="departureCode" value="'.$row["Code"].'">';
-                echo $row["Code"]." (".$row["Name"].")";
-                echo "<br>";
+                echo '<option value="'.$row["Code"].'">'.$row["Code"].' ('.$row["Name"].')</option>';
             }
             ?>
+            </select>
 
             <h2>Select Departure Time:</h2>
-
             <label for="departureHour">Hour:</label>
             <select name="departureHour">
             <?php
@@ -101,18 +108,19 @@
 
         <div class="slide">
             <h2>Select Arrival Location:</h2>
+            <label for="arrivalCode">Airport:</label>
+            <select name="arrivalCode">
+
             <?php
             $airports = $connection->query("select * from airport");
 
             while ($row = $airports->fetch()) {
-                echo '<input type="radio" name="arrivalCode" value="'.$row["Code"].'">';
-                echo $row["Code"]." (".$row["Name"].")";
-                echo "<br>";
+                echo '<option value="'.$row["Code"].'">'.$row["Code"].' ('.$row["Name"].')</option>';
             }
             ?>
+            </select>
 
             <h2>Select Arrival Time:</h2>
-
             <label for="arrivalHour">Hour:</label>
             <select name="arrivalHour">
             <?php
@@ -152,6 +160,13 @@
     </div>
 
     </form>
+
+    <?php
+    if (isset($_POST["flightNumber"])) {
+        echo '<p>Check that your flight was added to the available flights</p>';
+        include 'components/flightInfo.php';
+    }
+    ?>
 </body>
 
 </html>
