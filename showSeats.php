@@ -13,7 +13,7 @@
 -->
 
 <?php
-    include 'componente/head.php';
+    include 'components/head.php';
 ?>
 
 <body>

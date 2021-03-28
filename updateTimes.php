@@ -7,23 +7,23 @@
     time & the information in the table should be updated.
 -->
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Airline</title>
-    <link rel="stylesheet" href="CSS/airline.css">
-</head>
+<?php
+    include 'components/head.php';
+?>
 
 <body>
     <?php
-    include 'connectdb.php';
-    include 'components/navigation.php'
+        include 'connectdb.php';
+        include 'components/navigation.php';
+
+        if (isset($_POST["flight"])) {
+            echo '<h2>Update another departure time?</h2>';
+        } else {
+            echo '<h2>Update departure time</h2>';
+        }
     ?>
 
-    <h2>Update Departure time</h2>
-
-    <form action="updateTimes_results.php" method="post">
+    <form action="updateTimes.php" method="post">
         <label for="flight">Select Flight:</label>
         <select name="flight">
         <?php
@@ -55,6 +55,20 @@
 
         <input class="button" id="updateTimes_results" type="submit" value="Update Flight Times">
     </form>
+
+    <?php
+        if (isset($_POST["flight"])) {
+            $flightNumber = substr($_POST["flight"], 0, 3);
+            $airlineCode = "'".substr($_POST["flight"], 3)."'";
+
+            $departureTime = "'".$_POST["departureHour"].":".$_POST["departureMinute"].":00'";
+
+            $updateDeparture = "UPDATE flight SET ADepartTime=".$departureTime."WHERE Number=".$flightNumber." and AirlineCode=".$airlineCode;
+            $connection->exec($updateDeparture);
+
+            include 'components/flightInfo.php';
+        }
+    ?>
 
 </body>
 
