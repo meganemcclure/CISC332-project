@@ -12,22 +12,17 @@
     average number of seats for Wednesday = 300 seats
 -->
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Airline</title>
-    <link rel="stylesheet" href="CSS/airline.css">
-</head>
+<?php
+    include 'componente/head.php';
+?>
 
 <body>
     <?php
     include 'connectdb.php';
     include 'components/navigation.php';
 
-    $day = $_POST["day"];
-
-    if ($day) {
+    if (isset($_POST["day"])) {
+        $day = $_POST["day"];
         $formattedDay = '"'.$day.'"';
         $planesQuery = "SELECT flight.Number, flight.AirlineCode, flight.Plane, airplane.ID, planetype.SeatMax
                             FROM daysoffered, flight, airplane, planetype 
@@ -45,7 +40,7 @@
     <h2>Find Average number of Available Seats:</h2>
 
     <?php
-        if (! $day) {
+        if (! isset($_POST["day"])) {
             echo "<p>Please Select a Day of the Week";
         }
     ?>
@@ -66,7 +61,7 @@
     </form>
 
     <?php
-        if ($day) {
+        if (isset($_POST["day"])) {
             $average = 0;
             $rowCount = 0;
 
@@ -94,7 +89,7 @@
     ?>
 
     <?php
-        if ($day) {
+        if (isset($_POST["day"])) {
             $average = strval($average/$rowCount);
             echo '<p>Average Seats on '.$day.': '.$average;
         }

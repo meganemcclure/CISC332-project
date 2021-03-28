@@ -5,13 +5,9 @@
     times that are the same as their actual arrival times.
 -->
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Airline</title>
-    <link rel="stylesheet" href="CSS/airline.css">
-</head>
+<?php
+    include 'components/head.php';
+?>
 
 <body>
     <?php
@@ -23,14 +19,16 @@
     
     $flights = $connection->query("select * from flight where SArriveTime=AArriveTime");
 
-    echo "<ol>";
+    echo '<ol>';
     while ($row = $flights->fetch()) {
-        echo "<li>";
-        echo "Flight Code: ".$row["Number"].$row["AirlineCode"];
-        echo "<p>Arrival Time: ".$row["AArriveTime"]."</p>";
-        echo "</li>";
+        echo '<li>';
+        echo 'Flight Code: '.$row["Number"].$row["AirlineCode"];
+        echo '<p>Arrival Time: '.$row["AArriveTime"].'</p>';
+        echo '</li>';
     }
-    echo "</ol>";
+    echo '</ol>';
+
+    include 'components/flightInfo.php';
 
     $connection = NULL;
     ?>

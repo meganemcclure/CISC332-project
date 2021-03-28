@@ -18,14 +18,6 @@
 </head>
 
 <body>
-    <?php
-    include 'connectdb.php';
-    include 'components/navigation.php'
-    ?>
-
-    <form action="airline.php" method="post">
-        <input class="button" type="submit" value="Home">
-    </form>
 
     <?php
     $airlineCode = $_POST["airlineCode"];
