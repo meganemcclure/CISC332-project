@@ -58,7 +58,7 @@
 
         <div class="carosel">
             <div class="slide">
-                <h3>Enter a flight number (required)</h3>
+                <h3>Enter a flight number (required) <span id="code-error">* Flight Numbers must be 3 digits</span></h3>
                 <div class="form-group">
                     <label for="flightNumber">Flight Number:</label>
                     <input type="text" name="flightNumber" id="flightNumber" required>
@@ -216,6 +216,7 @@
             }
         ?>
     </div>
+
 </body>
 
 </html>

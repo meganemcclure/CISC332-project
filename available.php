@@ -100,6 +100,8 @@
                         $rowCount += 1;
                     }
 
+                    echo '</table>';
+
                     if (! $rowCount > 0) {
                         echo '<p>No available '.$airlineCode.' flights on '.$day.'.</p>';
                     }

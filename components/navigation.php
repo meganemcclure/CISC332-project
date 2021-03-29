@@ -1,4 +1,7 @@
 
+<div class="nav-spacer">
+</div>
+
 <div class="navigation">
 
     <span>
@@ -37,4 +40,7 @@
         </form>
     </span>
 
+</div>
+
+<div class="nav-spacer">
 </div>

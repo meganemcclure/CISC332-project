@@ -18,11 +18,7 @@ body {
 
 .main-content {
   margin: 20px;
-}
-
-h2 {
-  margin: 10px;
-  text-align: center;
+  /* max-width: 1000px; */
 }
 
 /* Fonts */
@@ -42,6 +38,11 @@ h1 {
   font-size: 3em;
 }
 
+h2 {
+  margin: 20px;
+  text-align: center;
+}
+
 /* Header */
 header div {
   text-align: center;
@@ -50,7 +51,7 @@ header div {
   background-color: #073b3a;
 }
 
-/* Front Page */
+/* Front Page & Navigation Bar */
 .home-page,
 .navigation {
   display: flex;
@@ -102,11 +103,26 @@ header div {
   outline: none;
 }
 
+.nav-spacer {
+  margin: 10px 0;
+  height: 10px;
+  width: 100%;
+  background-color: #619b8a;
+  padding: 0;
+  /* background-color: #5e3023; */
+}
+
 /* Footer */
 footer {
-  text-align: center;
-  padding: 50px;
+  /* position: fixed; */
+  bottom: 0;
+  width: 100%;
   text-shadow: 2px 2px #0f0806;
+  text-align: center;
+}
+
+footer section {
+  padding: 20px;
 }
 
 /* table */
@@ -131,14 +147,15 @@ tr {
 .form-group {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  margin: 5px 0;
 }
 
 .form-group label {
   flex: none;
   width: 250px;
-  display: inline;
-  vertical-align: middle;
+  display: block;
+  float: left;
+  padding-top: 5px;
 }
 
 /* visual styling for form data entry elements */
@@ -207,6 +224,11 @@ form .button {
 
 .carosel-button button:disabled {
   color: black;
+}
+
+#code-error {
+  color: red;
+  display: none;
 }
 
 #nextButton {

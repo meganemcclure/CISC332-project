@@ -1,5 +1,9 @@
 var slideIndex = 0;
 
+function setup() {
+    document.getElementById("flightNumber").addEventListener("keyup", validateFlight);
+    showSlides(slideIndex);
+}
 // Next/previous controls
 function plusSlides(n) {
   showSlides(slideIndex += n);
@@ -11,9 +15,14 @@ function currentSlide(n) {
 }
 
 function validateFlight() {
-    if (document.getElementById("flightNumber").value) {
+    let code = document.getElementById("flightNumber").value;
+    if (((! isNaN(code)) || code.length == 0) && code.length <=3 ) {
+        console.log("VALID");
+        document.getElementById("code-error").style.display = "none";
         return true;
     } else {
+        console.log("INVALID");
+        document.getElementById("code-error").style.display = "inline";
         return false;
     }
 }
@@ -57,4 +66,4 @@ function showSlides(n) {
     slides.item(slideIndex).style.display = "block";
 }
 
-window.addEventListener("load", showSlides(slideIndex));
+window.addEventListener("load", setup());
