@@ -15,24 +15,35 @@
     include 'components/navigation.php'
     ?>
     <h2>Flights that have arrived On Time</h2>
-    <?php
     
-    $flights = $connection->query("select * from flight where SArriveTime=AArriveTime");
+    <div class="main-content output-content">  
+        <label for="ontime">On Time Flights</label>
+        <table id="ontime">
+            <tr>
+                <th>Flight Code</th>
+                <th>Arrival Time</th>
+            </tr>
 
-    echo '<ol>';
-    while ($row = $flights->fetch()) {
-        echo '<li>';
-        echo 'Flight Code: '.$row["Number"].$row["AirlineCode"];
-        echo '<p>Arrival Time: '.$row["AArriveTime"].'</p>';
-        echo '</li>';
-    }
-    echo '</ol>';
+            <?php
+            $flights = $flights = $connection->query("select * from flight where SArriveTime=AArriveTime");
 
-    include 'components/flightInfo.php';
+            while ($row = $flights->fetch()) {
+            echo "<tr>";
 
-    $connection = NULL;
-    ?>
+            echo "<td>".$row["Number"].$row["AirlineCode"]."</td>";
+            echo "<td>".$row["AArriveTime"]."</td>";
+
+            echo "</tr>";
+            }
+            ?>
+
+        </table>
+    </div>
 
 </body>
+
+<?php
+    include 'components/footer.php';
+?>
 
 </html>

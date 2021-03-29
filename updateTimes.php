@@ -23,39 +23,50 @@
         }
     ?>
 
-    <form action="updateTimes.php" method="post">
-        <label for="flight">Select Flight:</label>
-        <select name="flight">
-        <?php
-        $flights = $flights = $connection->query("select * from flight");
+    <div class="main-content"> 
+        <form action="updateTimes.php" method="post">
+            <div class="form-group">
+                <label for="flight">Select Flight:</label>
+                <select name="flight">
+                <?php
+                    $flights = $flights = $connection->query("select * from flight");
 
-        while ($row = $flights->fetch()) {
-            echo "<option value='".$row["Number"].$row["AirlineCode"]."'>".$row["Number"].$row["AirlineCode"]."</option>";
-        }
-        ?>
-        </select>
+                    while ($row = $flights->fetch()) {
+                        echo "<option value='".$row["Number"].$row["AirlineCode"]."'>".$row["Number"].$row["AirlineCode"]."</option>";
+                    }
+                ?>
+                </select>
+            </div>
 
-        <label for="departureHour">Hour:</label>
-        <select name="departureHour">
-        <?php
-        for ($i = 0; $i < 24; $i++) {
-            echo "<option value='".$i."'>".$i."</option>";
-        }
-        ?>
-        </select>
+            <div class="form-group">
+                <label for="departureHour">Hour:</label>
+                <select name="departureHour">
+                <?php
+                    for ($i = 0; $i < 24; $i++) {
+                        echo "<option value='".$i."'>".$i."</option>";
+                    }
+                ?>
+                </select>
+            </div>
 
-        <label for="departureMinute">Minute:</label>
-        <select name="departureMinute">
-        <?php
-        for ($i = 0; $i < 60; $i++) {
-            echo "<option value='".$i."'>".$i."</option>";
-        }
-        ?>
-        </select>
+            <div class="form-group">
+                <label for="departureMinute">Minute:</label>
+                <select name="departureMinute">
+                <?php
+                    for ($i = 0; $i < 60; $i++) {
+                        echo "<option value='".$i."'>".$i."</option>";
+                    }
+                ?>
+                </select>
+            </div>
 
-        <input class="button" id="updateTimes_results" type="submit" value="Update Flight Times">
-    </form>
+            <div class="form-group">
+                <input class="button" id="updateTimes_results" type="submit" value="Update Flight Times">
+            </div>
+        </form>
+    </div>
 
+    <div class="output-content">
     <?php
         if (isset($_POST["flight"])) {
             $flightNumber = substr($_POST["flight"], 0, 3);
@@ -69,6 +80,7 @@
             include 'components/flightInfo.php';
         }
     ?>
+    </div>
 
 </body>
 

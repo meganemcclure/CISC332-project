@@ -37,63 +37,73 @@
     
     ?>
 
-    <h2>Find Average number of Available Seats:</h2>
+    <h2>Find Average number of Available Seats</h2>
 
-    <?php
-        if (! isset($_POST["day"])) {
-            echo "<p>Please Select a Day of the Week";
-        }
-    ?>
-
-    <form action="showSeats.php" method="Post">
-        <label for="day">Day:</label>
-        <select name="day">
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
-        </select>
-
-        <input id="average" type="submit" value="Average Seat #">
-    </form>
-
-    <?php
-        if (isset($_POST["day"])) {
-            $average = 0;
-            $rowCount = 0;
-
-            echo '    <table id="components/flightInfo">
-                        <tr>
-                            <th>Flight Code</th>
-                            <th>Plane ID</th>
-                            <th>Seat Max</th>
-                        </tr>';
-            while ($row = $planes->fetch()) {
-                echo "<tr>";
-
-                echo "<td>".$row["Number"].$row["AirlineCode"]."</td>";
-                echo "<td>".$row["ID"]."</td>";
-                echo "<td>".$row["SeatMax"]."</td>";
-
-                $average += $row["SeatMax"];
-                $rowCount += 1;
-
-                echo '</tr>';
+    <div class="main-content">
+        <?php
+            if (! isset($_POST["day"])) {
+                echo "<h3>Please Select a Day of the Week</h3>";
+            } else {
+                echo "<h3>Select Another Day of the Week?</h3>";
             }
+        ?>
 
-            echo '</table>';
-        }
-    ?>
+        <form action="showSeats.php" method="Post">
+            <div class="form-group">
+                <label for="day">Day:</label>
+                <select name="day">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+            </div>
 
-    <?php
-        if (isset($_POST["day"])) {
-            $average = strval($average/$rowCount);
-            echo '<p>Average Seats on '.$day.': '.$average;
-        }
-    ?>
+            <div class="form-group">
+                <input class="button" id="average" type="submit" value="Average Seat #">
+            </div>
+        </form>
+    </div>
+
+    <div class="output-content">
+        <?php
+            if (isset($_POST["day"])) {
+                $average = 0;
+                $rowCount = 0;
+
+                echo '    <table id="components/flightInfo">
+                            <tr>
+                                <th>Flight Code</th>
+                                <th>Plane ID</th>
+                                <th>Seat Max</th>
+                            </tr>';
+                while ($row = $planes->fetch()) {
+                    echo "<tr>";
+
+                    echo "<td>".$row["Number"].$row["AirlineCode"]."</td>";
+                    echo "<td>".$row["ID"]."</td>";
+                    echo "<td>".$row["SeatMax"]."</td>";
+
+                    $average += $row["SeatMax"];
+                    $rowCount += 1;
+
+                    echo '</tr>';
+                }
+
+                echo '</table>';
+            }
+        ?>
+
+        <?php
+            if (isset($_POST["day"])) {
+                $average = strval($average/$rowCount);
+                echo '<p>Average Seats on '.$day.': '.$average;
+            }
+        ?>
+    </div>
 
 </body>
 

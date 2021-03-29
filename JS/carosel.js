@@ -10,6 +10,14 @@ function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 
+function validateFlight() {
+    if (document.getElementById("flightNumber").value) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function showSlides(n) {
 
     var slides = document.getElementsByClassName("slide");
@@ -22,9 +30,28 @@ function showSlides(n) {
     }
 
     if (slideIndex == slides.length-1) {
-        document.getElementById("addFlight").style.display = "block";
+        document.getElementById("nextButton").disabled = true;
+        document.getElementById("nextButton").style.opacity = 0.5;
+        if (validateFlight()) {
+            document.getElementById("addFlight").style.opacity = 1;
+            document.getElementById("addFlight").disabled = false;
+        } else {
+            document.getElementById("addFlight").style.opacity = 0.5;
+            document.getElementById("addFlight").disabled = true;
+        }
     } else {
-        document.getElementById("addFlight").style.display = "none";
+        document.getElementById("nextButton").disabled = true;
+        document.getElementById("nextButton").style.opacity = 1;
+        document.getElementById("addFlight").style.opacity = 0.5;
+        document.getElementById("addFlight").disabled = true;
+    }
+
+    if (slideIndex == 0) {
+        document.getElementById("previousButton").disabled = true;
+        document.getElementById("previousButton").style.opacity = 0.5;
+    } else {
+        document.getElementById("previousButton").disabled = false;
+        document.getElementById("previousButton").style.opacity = 1;
     }
 
     slides.item(slideIndex).style.display = "block";
