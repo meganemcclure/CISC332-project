@@ -11,9 +11,15 @@ html,
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
+
   background-color: #073b3a;
   color: #f7fff6;
   font-family: "Source Code Pro", monospace;
+}
+
+#content {
+  min-height: 100%;
 }
 
 .main-content {
@@ -95,6 +101,7 @@ header div {
 .navigation span form input {
   padding: 20px;
   font-size: 1em;
+  display: inline;
 }
 
 .home-page span form input:focus,
@@ -109,16 +116,26 @@ header div {
   width: 100%;
   background-color: #619b8a;
   padding: 0;
-  /* background-color: #5e3023; */
 }
 
 /* Footer */
 footer {
-  /* position: fixed; */
   bottom: 0;
   width: 100%;
+
   text-shadow: 2px 2px #0f0806;
   text-align: center;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#plane {
+  background-color: transparent;
+  height: 80px;
+  margin: 20px;
 }
 
 footer section {
@@ -198,6 +215,8 @@ form .button {
   display: flex;
   align-items: center;
   flex-direction: column;
+  /* min-height: 100%; */
+  padding-bottom: 100px;
 }
 
 /* carosed */

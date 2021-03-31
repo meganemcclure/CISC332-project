@@ -4,6 +4,7 @@
 ?>
 
 <body>
+<div id="content">
     <?php
     include 'connectdb.php';
     ?>
@@ -49,10 +50,13 @@
     </div>
 
     <?php
-    include 'components/footer.php';
     $connection = NULL;
     ?>
+</div>
 
 </body>
+<?php
+include 'components/footer.php';
+?>
 
 </html>
