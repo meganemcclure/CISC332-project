@@ -78,26 +78,39 @@
                     $airlineCode = $_POST["airlineCode"];
                     $day = $_POST["day"];
 
-                    $flightsQuery = 'SELECT *
-                                        FROM daysoffered
-                                        WHERE AirlineCode="'.$airlineCode.'" AND Day="'.$day.'"';
+                    $flightsQuery = 'SELECT daysoffered.AirlineCode, daysoffered.FlightNumber, DepartureHost, ArrivalHost
+                                        FROM daysoffered, flight
+                                        WHERE   daysoffered.AirlineCode="'.$airlineCode.'" AND 
+                                                Day="'.$day.'" AND 
+                                                daysoffered.AirlineCode=flight.AirlineCode AND 
+                                                daysoffered.FlightNumber=flight.Number';
                     
                     $flights = $connection->query($flightsQuery);
 
-                    echo '<table id="ontime">
+                    ?>
+
+                    <table id="ontime">
                         <tr>
                             <th>Flight Code</th>
-                            <th>Flight Number</th>
-                        </tr>';
+                            <th>Departure Location</th>
+                            <th>Arrival Location</th>
+                        </tr>
+
+                    <?php
 
                     $rowCount = 0;
                     while ($row = $flights->fetch()) {
-                        echo "<tr>";
+                        $arrivalLocation = $connection->query('SELECT  DISTINCT Name FROM airport WHERE "'.$row["ArrivalHost"].'"=Code');
+                        $departureLocation = $connection->query('SELECT DISTINCT Name FROM airport WHERE "'.$row["DepartureHost"].'"=Code');
+                        ?>
+                        <tr>
 
-                        echo "<td>".$row["FlightNumber"].$row["AirlineCode"]."</td>";
-                        echo "<td>".$row["FlightNumber"]."</td>";
+                        <td><?php echo $row["FlightNumber"].$row["AirlineCode"]; ?> </td>
+                        <td><?php echo $arrivalLocation->fetch()["Name"]; ?></td>
+                        <td><?php echo $departureLocation->fetch()["Name"]; ?></td>
 
-                        echo "</tr>";
+                        </tr>
+                        <?php
                         $rowCount += 1;
                     }
 
