@@ -75,12 +75,14 @@
                 $average = 0;
                 $rowCount = 0;
 
-                echo '    <table id="components/flightInfo">
-                            <tr>
-                                <th>Flight Code</th>
-                                <th>Plane ID</th>
-                                <th>Seat Max</th>
-                            </tr>';
+                ?>
+                <table id="components/flightInfo">
+                    <tr>
+                        <th>Flight Code</th>
+                        <th>Plane ID</th>
+                        <th>Seat Max</th>
+                    </tr>
+                <?php
                 while ($row = $planes->fetch()) {
                     echo "<tr>";
 
@@ -99,9 +101,12 @@
         ?>
 
         <?php
-            if (isset($_POST["day"])) {
+            if (isset($_POST["day"]) and $rowCount > 0) {
                 $average = strval($average/$rowCount);
                 echo '<p>Average Seats on '.$day.': '.$average;
+            } else if (isset($_POST["day"])) {
+                echo '<p>No Flights on '.$day.'.';
+                echo '<p>Average Seats on '.$day.': 0';
             }
         ?>
     </div>

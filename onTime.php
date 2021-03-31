@@ -27,14 +27,20 @@
 
             <?php
             $flights = $flights = $connection->query("select * from flight where SArriveTime=AArriveTime");
+            $rowCount = 0;
 
             while ($row = $flights->fetch()) {
-            echo "<tr>";
+                echo "<tr>";
 
-            echo "<td>".$row["Number"].$row["AirlineCode"]."</td>";
-            echo "<td>".$row["AArriveTime"]."</td>";
+                echo "<td>".$row["Number"].$row["AirlineCode"]."</td>";
+                echo "<td>".$row["AArriveTime"]."</td>";
 
-            echo "</tr>";
+                echo "</tr>";
+                $rowCount += 1;
+            }
+
+            if ($rowCount <= 0) {
+                echo '<p>No flights have arrived on time.</p>';
             }
             ?>
 
